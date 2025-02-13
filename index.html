@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Valentine's Day...!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Dancing+Script:wght@700&family=Great+Vibes&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            font-family: 'Dancing Script', cursive;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            text-align: center;
+            color: #fff;
+        }
+
+        .home-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .home-container h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3rem;
+            color: #fff;
+            text-shadow: 2px 2px 0px #FF69B4;
+            margin-bottom: 1.5rem;
+        }
+
+        .heart-icon {
+            font-size: 4rem;
+            cursor: pointer;
+            color: #FF69B4;
+            animation: heartbeat 1.5s infinite;
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        .popup-message {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 255, 255, 0.9);
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            font-size: 1.8rem;
+            color: #FF69B4;
+            display: none;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <div class="home-container" id="homePage">
+        <h1>Happy Valentine's Day, dear Vaishu...! ❤️</h1>
+        <i class="fas fa-heart heart-icon" onclick="openMainPage()"></i>
+    </div>
+
+    <div class="container" id="mainPage" style="display: none;">
+        <h1>My Dearest Vaishu ❤️</h1>
+        <p class="romantic-text">
+            सर्वप्रथम सोचा कि तुमको लिखूं पत्र इक प्रेम भरा, पुनः सोचकर रुका पत्र तुमसे प्यारा भी होगा क्या?<br>
+            यह धारण करने योग्य कला यह दुःख में भी हसमुख चेहरा,<br>
+            यह सौम्य स्वरुप सा तन तेरा और उसपे मन आकाश भरा,<br>
+            यह तरल चांदनी की छाया बालों के नीचे कांधो पर, यह है प्रकाश का सात रंग चेहरे के दीपित भालों पर,<br>
+            इन सबके मध्य में पत्र मेरा कितना ही प्रेम भरा होगा?<br>
+            सागर के सम्मुख बूंदों का आस्तित्व भला कितना होगा?
+        </p>
+        <div class="icons">
+            <div class="icon heart" onclick="showPopup('You are my heartbeat! ❤️')">
+                <i class="fas fa-heart"></i>
+            </div>
+            <div class="icon kiss" onclick="showPopup('Sending you kisses! 💋')">
+                <i class="fas fa-kiss-wink-heart"></i>
+            </div>
+            <div class="icon flower" onclick="showPopup('You are as beautiful as a rose! 🌹')">
+                <i class="fas fa-spa"></i>
+            </div>
+        </div>
+    </div>
+    
+    <div id="popupMessage" class="popup-message"></div>
+    
+    <audio id="romanticMusic">
+        <source src="https://res.cloudinary.com/dsoeujnso/video/upload/v1739473472/YuvrajsMusic/rkmrtjifegxzbrzmy7ek.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    
+    <script>
+        function openMainPage() {
+            document.getElementById("homePage").style.display = "none";
+            document.getElementById("mainPage").style.display = "block";
+            const audio = document.getElementById("romanticMusic");
+            audio.play().catch(error => console.log("Autoplay blocked: ", error));
+        }
+
+        function showPopup(message) {
+            const popup = document.getElementById("popupMessage");
+            popup.textContent = message;
+            popup.style.display = "block";
+            setTimeout(() => {
+                popup.style.display = "none";
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
